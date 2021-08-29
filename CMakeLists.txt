@@ -18,3 +18,4 @@ include_directories(includes)
 file(GLOB SOURCES src/*)
 
 add_executable(${EXEC} ${SOURCES})
+install(TARGETS ${EXEC} DESTINATION /usr/local/bin)

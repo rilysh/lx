@@ -1,7 +1,7 @@
 #include <string_view>
 #include <unordered_map>
 
-std::unordered_map<std::string_view, std::string_view> kFullnameMap = {
+const std::unordered_map<std::string_view, std::string_view> kFullnameMap = {
   {".Trash",             "\uf1f8"}, // 
   {".atom",              "\ue764"}, // 
   {".bashprofile",       "\ue615"}, // 
@@ -46,7 +46,7 @@ std::unordered_map<std::string_view, std::string_view> kFullnameMap = {
 
 
 
-std::unordered_map<std::string_view, std::string_view> kExtmap = {
+const std::unordered_map<std::string_view, std::string_view> kExtmap = {
 
   { ".ai",             "\ue7b4"}, // 
   { ".android",        "\ue70e"}, // 

@@ -1,6 +1,6 @@
 #include <string_view>
 namespace color {
-  const std::string_view End         {"\033[0;0m"};
+  const std::string_view End           {"\033[0;0m"};
   namespace misc{
     const std::string_view Bold        {"\033[1m"};
     const std::string_view Dull        {"\033[2m"};
