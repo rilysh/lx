@@ -2,28 +2,19 @@
 #include <unordered_map>
 
 const std::unordered_map<std::string_view, std::string_view> kFullnameMap = {
-  {".Trash",             "\uf1f8"}, // 
-  {".atom",              "\ue764"}, // 
   {".bashprofile",       "\ue615"}, // 
   {".bashrc",            "\uf489"}, // 
-  {".git",               "\uf1d3"}, // 
   {".gitattributes",     "\uf1d3"}, // 
   {".gitconfig",         "\uf1d3"}, // 
-  {".github",            "\uf408"}, // 
   {".gitignore",         "\uf1d3"}, // 
-  {".gitmodules",        "\uf1d3"}, // 
   {".rvm",               "\ue21e"}, // 
   {".vimrc",             "\ue62b"}, // 
-  {".vscode",            "\ue70c"}, // 
   {".zshrc",             "\uf489"}, // 
   {"Cargo.lock",         "\ue7a8"}, // 
-  {"bin",                "\ue5fc"}, // 
-  {"config",             "\ue5fc"}, // 
   {"docker-compose.yml", "\uf308"}, // 
   {"Dockerfile",         "\uf308"}, // 
   {"ds_store",           "\uf179"}, // 
   {"gitignore_global",   "\uf1d3"}, // 
-  {"gradle",             "\ue70e"}, // 
   {"gruntfile.coffee",   "\ue611"}, // 
   {"gruntfile.js",       "\ue611"}, // 
   {"gruntfile.ls",       "\ue611"}, // 
@@ -31,20 +22,31 @@ const std::unordered_map<std::string_view, std::string_view> kFullnameMap = {
   {"gulpfile.js",        "\ue610"}, // 
   {"gulpfile.ls",        "\ue610"}, // 
   {"hidden",             "\uf023"}, // 
-  {"include",            "\ue5fc"}, // 
-  {"lib",                "\uf121"}, // 
   {"localized",          "\uf179"}, // 
   {"Makefile",           "\ue779"}, // 
-  {"node_modules",       "\ue718"}, // 
   {"npmignore",          "\ue71e"}, // 
   {"rubydoc",            "\ue73b"}, // 
   {"yarn.lock",          "\ue718"}, // 
+};
+
+
+const std::unordered_map<std::string_view, std::string_view> kFoldermap = {
+  {".git",               "\uf1d3"}, // 
+  {".Trash",             "\uf1f8"}, // 
+  {".atom",              "\ue764"}, // 
+  {".github",            "\uf408"}, // 
+  {".gitmodules",        "\uf1d3"}, // 
+  {".vscode",            "\ue70c"}, // 
+  {"bin",                "\ue5fc"}, // 
+  {"config",             "\ue5fc"}, // 
+  {"gradle",             "\ue70e"}, // 
+  {"include",            "\ue5fc"}, // 
+  {"lib",                "\uf121"}, // 
+  {"node_modules",       "\ue718"}, // 
   {"bin",                "\ue5fc"}, // 
   {".git",               "\uf1d3"}, // 
   {".idea",              "\ue7b5"}, // 
 };
-
-
 
 const std::unordered_map<std::string_view, std::string_view> kExtmap = {
 

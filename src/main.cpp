@@ -26,31 +26,6 @@ inline auto get_permissions(const fs::perms p) -> const std::string {
   + ((p & fs::perms::others_exec) != fs::perms::none  ? "x"s : "-"s);
 }
 
-/* using pair = std::pair<fs::perms, char>; */
-/* inline auto get_permissions(fs::perms p) -> std::string */
-/* { */
-/*     auto permissions = std::vector<pair> { */
-/*         pair{fs::perms::owner_read, 'r'  }, */
-/*         pair{fs::perms::owner_write, 'w' }, */
-/*         pair{fs::perms::owner_exec, 'x'  }, */
-/*         pair{fs::perms::group_read, 'r'  }, */
-/*         pair{fs::perms::group_write, 'w' }, */
-/*         pair{fs::perms::group_exec, 'x'  }, */
-/*         pair{fs::perms::others_read, 'r' }, */
-/*         pair{fs::perms::others_write, 'w'}, */
-/*         pair{fs::perms::others_exec, 'x' } */
-/*     }; */
-/*  */
-/*     char out[10] = "---------"; */
-/*  */
-/*     for (int i = 0; i < 10; i += 1) { */
-/*         if ((p & permissions[i].first) != fs::perms::none) */
-/*             out[i] = permissions[i].second; */
-/*     } */
-/*  */
-/*     return out; */
-/* } */
-
 auto main(int argc, const char** argv) -> int {
 
   argh::parser cmdl(argc, argv);
@@ -105,8 +80,8 @@ auto main(int argc, const char** argv) -> int {
         }
         else if(krType==fs::file_type::directory){
           std::string icon_s;
-          auto fIcon = kFullnameMap.find(entry.path().filename().string());
-          if(fIcon!=kFullnameMap.end()) icon_s = fIcon->second;
+          auto fIcon = kFoldermap.find(entry.path().filename().string());
+          if(fIcon!=kFoldermap.end()) icon_s = fIcon->second;
           else                         icon_s = "\uf115";
           if(bRealpath) std::cout << color::fg::DarkCyan << icon_s << " " << entry.path().string() << color::End << std::endl;
           else         std::cout << color::fg::DarkCyan << icon_s << " " << entry.path().filename().string() << color::End << std::endl;
@@ -182,7 +157,7 @@ auto main(int argc, const char** argv) -> int {
         icon_s = "\uf016";
       }
 
-        if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
+      if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
       if(bRealpath) std::cout << color::fg::LightCyan << icon_s << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightCyan << icon_s << " " << kFile.filename().string() << color::End << std::endl;
     }
@@ -191,7 +166,7 @@ auto main(int argc, const char** argv) -> int {
     else if(kType==fs::file_type::fifo){
       // "
       //
-        if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
+      if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
       if(bRealpath) std::cout << color::fg::LightBlue << "\uf731" << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightBlue << "\uf731" << " " << kFile.filename().string() << color::End << std::endl;
     }
@@ -199,7 +174,7 @@ auto main(int argc, const char** argv) -> int {
 
     else if(kType==fs::file_type::socket){
       // "
-        if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
+      if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
       if(bRealpath) std::cout << color::fg::LightBlue << "\uf6a7" << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightBlue << "\uf6a7" << " " << kFile.filename().string() << color::End << std::endl;
     }
@@ -207,7 +182,7 @@ auto main(int argc, const char** argv) -> int {
 
     else if(kType==fs::file_type::block){
       // ﰩ"
-        if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
+      if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
       if(bRealpath) std::cout << color::fg::LightBlue << "\ufc29" << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightBlue << "\ufc29" << " " << kFile.filename().string() << color::End << std::endl;
     }
@@ -222,7 +197,7 @@ auto main(int argc, const char** argv) -> int {
 
     else if(kType==fs::file_type::character){
       // "
-        if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
+      if(bLong) std::cout << color::fg::LightGreen << get_permissions(kStatus.permissions()) << color::End << "  ";
       if(bRealpath) std::cout << color::fg::LightBlue << "\ue601" << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightBlue << "\ue601" << " " << kFile.filename().string() << color::End << std::endl;
     }
