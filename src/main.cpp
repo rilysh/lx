@@ -35,9 +35,9 @@ auto main(int argc, const char** argv) -> int {
   const bool bDotfiles = cmdl[{ "-A", "-a", "--all" }];
   const bool bLong = cmdl[{ "-l", "--long" }];
   std::string path;
-  path = cmdl.pos_args()[1];
-  if(path.empty())
-    path=".";
+  if(cmdl.pos_args().size()<=1) path=".";
+  else                          path = cmdl.pos_args()[1];
+
 
   if(fs::exists(path)){
     const auto kFile = fs::path(path);
