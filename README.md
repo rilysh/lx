@@ -34,7 +34,9 @@ lx -l ~/code .. -a
 ```
 
 
-##### Flags
+#### Flags
 -a -A --all - Show dotfiles
+
 -l --long - show permissions and disk usage
+
 -r --realpath - show absolute path from current working directory
