@@ -1,6 +1,8 @@
 #include <iostream>
 #include <filesystem>
 #include <string>
+#include <vector>
+#include <cmath>
 #include "color.hpp"
 #include "argh.h"
 #include "icons.h"
@@ -9,6 +11,20 @@ using namespace std::string_literals;
 namespace fs = std::filesystem;
 
 #define KeyColor color::fg::DarkCyan
+
+
+struct HumanReadable {
+  std::uintmax_t size{};
+  private: friend
+    std::ostream& operator<<(std::ostream& os, HumanReadable hr) {
+        int i{};
+        double mantissa = hr.size;
+        for (; mantissa >= 1024.; mantissa /= 1024., ++i) { }
+        mantissa = std::ceil(mantissa * 10.) / 10.;
+        os << mantissa << "BKMGTPE"[i];
+        return i == 0 ? os : os << "B (" << hr.size << ')';
+    }
+};
 
 inline auto get_permissions(const fs::perms p) -> const std::string {
 
@@ -34,9 +50,14 @@ auto main(int argc, const char** argv) -> int {
   const bool bRealpath= cmdl[{ "-r", "--realpath" }];
   const bool bDotfiles = cmdl[{ "-A", "-a", "--all" }];
   const bool bLong = cmdl[{ "-l", "--long" }];
-  std::string path;
-  if(cmdl.pos_args().size()<=1) path=".";
-  else                          path = cmdl.pos_args()[1];
+  /* std::string path; */
+  /* if(cmdl.pos_args().size()<=1) path="."; */
+  /* else                          path = cmdl.pos_args()[1]; */
+
+  const std::vector<std::string> pwd = {"."};
+  const std::vector<std::string> clean_path =  {cmdl.pos_args().begin()+1, cmdl.pos_args().end()};
+  const std::vector<std::string> paths = (cmdl.pos_args().size()<=1)?pwd:clean_path;
+  for(auto path:paths){
 
 
   if(fs::exists(path)){
@@ -234,8 +255,12 @@ auto main(int argc, const char** argv) -> int {
       if(bRealpath) std::cout << color::fg::LightBlue << "\ue601" << " " << kFile.string() << color::End << std::endl;
       else         std::cout << color::fg::LightBlue << "\ue601" << " " << kFile.filename().string() << color::End << std::endl;
     }
+
+
+    std::cout << std::endl;
   } else{
     std::cerr << argv[0] << ": "<< path <<": No such file or directory" << std::endl;
+  }
   }
   return 0;
 }
