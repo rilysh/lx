@@ -1,6 +1,6 @@
 # LX
 
-A ls alternative
+A ls alternative, no like exa it isn't a `git status` alternative or `tree -C` alternative
 
 ### Building
 ```sh
@@ -18,7 +18,7 @@ cmake --install _build
 
 ### Usage
 ```
-lx .
+lx
 ```
 
 ```
@@ -29,3 +29,12 @@ lx ~/Desktop
 lx --realpath main.cpp
 ```
 
+```
+lx -l ~/code .. -a
+```
+
+
+##### Flags
+-a -A --all - Show dotfiles
+-l --long - show permissions and disk usage
+-r --realpath - show absolute path from current working directory
