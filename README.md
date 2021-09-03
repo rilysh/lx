@@ -1,6 +1,6 @@
 # LX
 
-A ls alternative, no like exa it isn't a `git status` alternative or `tree -C` alternative
+A ls alternative, no like exa it isn't a `git status --short` alternative or `tree -C` alternative
 
 ### Building
 ```sh
